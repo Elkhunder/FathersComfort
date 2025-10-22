@@ -26,6 +26,7 @@
       <Content Remove="fathers-comfort-2\**" />
       <Content Remove="fathers-comfort-3\**" />
       <Content Remove="Fathers_Comfort_4\**" />
+      <Content Include=".github\workflows\deploy.yml" />
     </ItemGroup>
 
     <ItemGroup>
