@@ -1,0 +1,120 @@
+﻿@using FathersComfort_MudBlazor.Components
+@inherits LayoutComponentBase
+@inject IJSRuntime JsRuntime
+
+@* Required *@
+<MudThemeProvider Theme="@_fathersComfortTheme" />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
+<MudLayout >
+    <HeaderComponent/>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+    <FooterComponent/>
+</MudLayout>
+
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code {
+    private bool _mobileMenuOpen = false;
+
+    private void ToggleMobileMenu()
+    {
+        _mobileMenuOpen = !_mobileMenuOpen;
+    }
+
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JsRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+    }
+    private readonly MudTheme _fathersComfortTheme = new MudTheme()
+    {
+    PaletteLight = new PaletteLight
+        {
+            Primary = "#4F6339",                // Muted Sage / Olive
+            Secondary = "#ECE8D3",              // Soft Taupe
+            Tertiary = "#C5C2AE",               // Light desaturated beige
+            Info = "#4F6339",                   // Same as primary
+            Success = "#6A8A52",                // Natural green for positive confirmation
+            Warning = "#C59643",                // Earthy amber for subtle alerts
+            Error = "#B64C41",                  // Brick red for contrast
+            Dark = "#2E303E",                   // Charcoal base for footer/header
+            Background = "#FFFFFF",             // Gentle neutral background
+            BackgroundGray = "#F5F3E3",         // Slightly lighter tone for contrast
+            Surface = "#F7F5EA",                // Creamy highlight surface
+            AppbarBackground = "#FFFFFF",       // Sage header
+            AppbarText = "#2E303E",            
+            TextPrimary = "#2E303E",            // Charcoal with blue undertones
+            TextSecondary = "#555A6E",          // Muted gray-blue
+            TextDisabled = "#B3B1A5",           // Light taupe-gray
+            ActionDefault = "#4F6339",
+            ActionDisabled = "#D5D2C3",
+            ActionDisabledBackground = "#EEEBDD",
+            Divider = "#D6D2BD",
+            DividerLight = "#E4E0D0",
+            TableLines = "#DBD6C0",
+            LinesDefault = "#DCD5C2",
+            LinesInputs = "#CFC9B7",
+            GrayDefault = "#B7B29D",
+            GrayLight = "#D6D2BD",
+            GrayLighter = "#EEEBDD",
+            GrayDark = "#7A7A6B",
+            GrayDarker = "#4F4C42",
+            OverlayDark = "rgba(46, 48, 62, 0.6)",
+            OverlayLight = "rgba(236, 232, 211, 0.9)",
+            HoverOpacity = 0.06
+        },
+
+        PaletteDark = new PaletteDark
+        {
+            Primary = "#7E9C60",                // Brighter olive-sage for visibility
+            Secondary = "#BEB9A1",              // Neutral beige
+            Tertiary = "#ECE8D3",               // Soft taupe for highlights
+            Info = "#7E9C60",                   // Same as primary
+            Success = "#93B67C",                // Gentle green for dark mode
+            Warning = "#D7A859",                // Slightly brighter amber
+            Error = "#D27A6E",                  // Brick red, lighter for dark surfaces
+            Dark = "#ECE8D3",                   // Taupe contrast for backgrounds
+            Background = "#2E303E",             // Charcoal core background
+            BackgroundGray = "#3C3D4B",         // Muted bluish dark neutral
+            Surface = "#383944",                // Slightly lighter surface than background
+            AppbarBackground = "#4F6339",       // Olive sage remains consistent
+            AppbarText = "#ECE8D3",             // Taupe for clarity
+            TextPrimary = "#ECE8D3",            // Taupe on dark
+            TextSecondary = "#C7C4B2",          // Slightly grayer beige
+            TextDisabled = "#716F63",           // Muted tone for disabled
+            ActionDefault = "#A4B48C",
+            ActionDisabled = "#4B4E55",
+            ActionDisabledBackground = "#3C3D4A",
+            Divider = "#4C4E53",
+            DividerLight = "#5A5C61",
+            TableLines = "#45464E",
+            LinesDefault = "#505159",
+            LinesInputs = "#5B5D63",
+            GrayDefault = "#A4A18C",
+            GrayLight = "#C5C2AE",
+            GrayLighter = "#ECE8D3",
+            GrayDark = "#4C4E53",
+            GrayDarker = "#383A40",
+            OverlayDark = "rgba(46, 48, 62, 0.85)",
+            OverlayLight = "rgba(79, 99, 57, 0.6)",
+            HoverOpacity = 0.06
+        },
+        Typography = new Typography()
+        {
+            Default = new DefaultTypography() { FontFamily = ["Inter", "sans-serif"] },
+        }
+    };
+}

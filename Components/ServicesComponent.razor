@@ -1,0 +1,94 @@
+<section id="services" class="section">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudText Class="mb-15 fade-in" Typo="Typo.h3" Style="font-weight: bold" Align="Align.Center">Our Services</MudText>
+        <MudGrid Class="section-content">
+            <MudItem xs="12" md="4">
+                <MudCard Class="service-card fade-in" Elevation="2">
+                    <MudCardContent>
+                        <MudElement HtmlTag="div" Class="d-flex justify-center">
+                            <MudFab Class="service-icon" Ripple="false" IconSize="Size.Large" StartIcon="@Icons.Material.Outlined.AcUnit" Color="Color.Primary" />
+                        </MudElement>
+                        <MudText Align="Align.Center" Typo="Typo.h5" Class="service-title">HVAC Installation & Repair</MudText>
+                        <MudText Align="Align.Center" Typo="Typo.body1" Class="service-description">
+                            Expert installation and repair of heating and cooling systems for optimal home comfort year-round.
+                        </MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudCard Class="service-card fade-in" Elevation="2">
+                    <MudCardContent>
+                        <MudElement HtmlTag="div" Class="d-flex justify-center">
+                            <MudFab Class="service-icon" Ripple="false" IconSize="Size.Large" StartIcon="@Icons.Material.Outlined.Build" Color="Color.Primary"/>
+                        </MudElement>
+                        <MudText Align="Align.Center" Typo="Typo.h5" Class="service-title">Heating & Cooling Maintenance</MudText>
+                        <MudText Align="Align.Center" Typo="Typo.body1" Class="service-description">
+                            Regular maintenance plans to keep your HVAC system running efficiently and extend its lifespan.
+                        </MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudCard Class="service-card fade-in" Elevation="2">
+                    <MudCardContent>
+                        <MudElement HtmlTag="div" Class="d-flex justify-center">
+                            <MudFab Class="service-icon" Ripple="false" IconSize="Size.Large" StartIcon="@Icons.Material.Outlined.Handyman" Color="Color.Primary" />
+                        </MudElement>
+                        <MudText Align="Align.Center" Typo="Typo.h5" Class="service-title">Home Repairs & Improvements</MudText>
+                        <MudText Align="Align.Center" Typo="Typo.body1" Class="service-description">
+                            Professional handyman services for all your home improvement and repair needs, big or small.
+                        </MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</section>
+
+<style>
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 24px;
+        pointer-events: none;
+        cursor: default;
+    }
+    .service-card{
+        background-color: var(--mud-palette-surface);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46, 48, 62, 0.1);
+    }
+    
+    .service-card .mud-card-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 30px rgba(46, 48, 62, 0.15);
+    }
+    .service-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    .service-description {
+        opacity: 0.8;
+    }
+</style>
+
+@code {
+
+}

@@ -1,0 +1,273 @@
+/* ============================================ */
+/* Minimal Custom CSS for MudBlazor Project */
+/* ============================================ */
+/* 
+   IMPORTANT: Most styling should be done through:
+   1. CustomMudTheme.cs - for colors, typography, shadows
+   2. MudBlazor component properties - for layout and styling
+
+   This file ONLY contains:
+   - Custom animations not provided by MudBlazor
+   - Complex layouts specific to your components
+   - Utility classes for specific use cases
+*/
+
+/* ============================================ */
+/* Font Face Declaration */
+/* ============================================ */
+@font-face {
+    font-family: 'FKGroteskNeue';
+    src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+/* ============================================ */
+/* Custom Animations */
+/* ============================================ */
+
+/* Fade-in animation for hero sections */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+h1:focus,
+h1:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================ */
+/* Component-Specific Layouts */
+/* ============================================ */
+
+/* Header Scroll Effect - Only custom backdrop blur behavior */
+.header-scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: backdrop-filter 0.3s ease;
+}
+
+/* Hero Section - Custom background effects */
+.hero-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(33, 128, 141, 0.05) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(30px, -30px);
+    }
+}
+
+.section{
+    padding: 80px 0;
+}
+
+.section-background{
+    background-size: cover;
+    background: linear-gradient(rgba(236, 232, 211, 0.85), rgba(236, 232, 211, 0.85)) fixed center;
+}
+
+.section-content{
+    margin-top: 40px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+/* Services Grid - Custom responsive grid layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Footer Layout - Custom multi-column layout */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+/* ============================================ */
+/* Utility Classes */
+/* ============================================ */
+
+/* Responsive container with max-width */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Aspect ratio container for images/videos */
+.aspect-ratio-16-9 {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    overflow: hidden;
+}
+
+.aspect-ratio-16-9 > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Glassmorphism effect for overlays */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Dark mode glass effect */
+.glass-effect-dark {
+    background: rgba(31, 33, 33, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* ============================================ */
+/* Responsive Breakpoints */
+/* ============================================ */
+
+/* Tablet and below */
+@media (max-width: 960px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .card {
+        margin: 0 40px;
+    }
+
+    .testimonial-card {
+        min-width: 280px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero {
+        min-height: 60vh;
+        background-attachment: scroll;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .services-grid, .trust-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .service-card, .testimonial-card {
+        padding: 25px 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        min-width: 90vw;
+    }
+
+    .content-container {
+        padding: 0 0.75rem;
+    }
+}
+
+/* ============================================ */
+/* Print Styles */
+/* ============================================ */
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .hero-background::before {
+        display: none;
+    }
+}

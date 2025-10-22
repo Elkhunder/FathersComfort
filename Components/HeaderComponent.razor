@@ -1,0 +1,286 @@
+@using FathersComfort_MudBlazor.Services
+@* HeaderComponent.razor - Full MudBlazor Implementation *@
+@inject IJSRuntime JSRuntime
+@inject ISchedulingService SchedulingService
+
+<MudAppBar Elevation="1" Dense="false" Class="header-appbar">
+    @* Logo Section *@
+    <MudLink Href="/" Underline="Underline.None" Class="d-flex align-center">
+        <MudStack Row Spacing="4" Class="d-flex align-center">
+            <MudImage Src="./images/FC_Icon_Transparent.svg" ObjectFit="ObjectFit.Contain" Height="64"></MudImage>
+            <MudText Typo="Typo.h5" Color="Color.Primary" Class="logo-text">
+                <strong>Fathers Comfort</strong>
+            </MudText>
+        </MudStack>
+    </MudLink>
+    
+    <MudSpacer />
+    
+    @* Desktop Navigation *@
+    <MudHidden Breakpoint="Breakpoint.MdAndDown" Invert="false">
+        <MudStack Row="true" Spacing="1" Class="nav-links">
+            <MudLink Href="#home" 
+                     Underline="Underline.None"
+                     Class="nav-link">
+                Home
+            </MudLink>
+            <MudLink Href="#services" 
+                     Underline="Underline.None"
+                     Class="nav-link">
+                Services
+            </MudLink>
+            <MudLink Href="#about" 
+                     Underline="Underline.None"
+                     Class="nav-link">
+                About Us
+            </MudLink>
+            <MudLink Href="#testimonials" 
+                     Underline="Underline.None"
+                     Class="nav-link">
+                Testimonials
+            </MudLink>
+            <MudLink Href="#contact" 
+                     Underline="Underline.None"
+                     Class="nav-link">
+                Contact
+            </MudLink>
+            <MudLink Href="#blog" 
+                     Underline="Underline.None"
+                     Class="nav-link">
+                Blog
+            </MudLink>
+        </MudStack>
+    </MudHidden>
+    
+    <MudSpacer />
+    
+    @* CTA Button - Hidden on mobile *@
+    <MudHidden Breakpoint="Breakpoint.MdAndDown" Invert="false">
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Size="Size.Medium"
+                   StartIcon="@Icons.Material.Filled.CalendarMonth"
+                   Class="cta-button"
+                   OnClick="@ScheduleService">
+            Schedule Service
+        </MudButton>
+    </MudHidden>
+    
+    @* Mobile Menu Button *@
+    <MudHidden Breakpoint="Breakpoint.LgAndUp" Invert="false">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.End"
+                       OnClick="@ToggleDrawer"
+                       Class="mobile-menu-button" />
+    </MudHidden>
+</MudAppBar>
+
+@* Mobile Navigation Drawer *@
+<MudDrawer @bind-Open="@_drawerOpen" 
+           Anchor="Anchor.End" 
+           Elevation="2"
+           Variant="DrawerVariant.Temporary"
+           Class="mobile-drawer">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6" Color="Color.Primary">
+            <strong>Comfort HVAC</strong>
+        </MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.Close"
+                       Color="Color.Inherit"
+                       Edge="Edge.End"
+                       OnClick="@ToggleDrawer" />
+    </MudDrawerHeader>
+    
+    <MudNavMenu Class="mobile-nav-menu">
+        <MudNavLink Href="#home" 
+                    Icon="@Icons.Material.Filled.Home"
+                    OnClick="@CloseDrawer">
+            Home
+        </MudNavLink>
+        <MudNavLink Href="#services" 
+                    Icon="@Icons.Material.Filled.Build"
+                    OnClick="@CloseDrawer">
+            Services
+        </MudNavLink>
+        <MudNavLink Href="#about" 
+                    Icon="@Icons.Material.Filled.Info"
+                    OnClick="@CloseDrawer">
+            About Us
+        </MudNavLink>
+        <MudNavLink Href="#testimonials" 
+                    Icon="@Icons.Material.Filled.Reviews"
+                    OnClick="@CloseDrawer">
+            Testimonials
+        </MudNavLink>
+        <MudNavLink Href="#contact" 
+                    Icon="@Icons.Material.Filled.ContactMail"
+                    OnClick="@CloseDrawer">
+            Contact
+        </MudNavLink>
+        <MudNavLink Href="#blog" 
+                    Icon="@Icons.Material.Filled.Article"
+                    OnClick="@CloseDrawer">
+            Blog
+        </MudNavLink>
+        
+        <MudDivider Class="my-4" />
+        
+        @* Mobile CTA Button *@
+        <div class="pa-4">
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       FullWidth="true"
+                       Size="Size.Large"
+                       StartIcon="@Icons.Material.Filled.CalendarMonth"
+                       OnClick="@ScheduleService"
+                       UserAttributes="_buttonAttributes"
+                       Class="cta-button">
+                Schedule Service
+            </MudButton>
+        </div>
+    </MudNavMenu>
+</MudDrawer>
+
+<style>
+    /* ============================================ */
+    /* MudAppBar Custom Styling */
+    /* ============================================ */
+    
+    .header-appbar {
+        box-shadow: 0 2px 10px rgba(46, 48, 62, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: all 0.3s ease;
+    }
+    
+    /* Logo styling */
+    .logo-text {
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em;
+    }
+    
+    /* Desktop Navigation Links */
+    .nav-links {
+        align-items: center;
+    }
+    
+    .nav-link {
+        color: var(--mud-palette-text-primary) !important;
+        font-weight: 500 !important;
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        text-decoration: none !important;
+    }
+    
+    .nav-link:hover {
+        color: var(--mud-palette-primary) !important;
+        background-color: rgba(33, 128, 141, 0.08);
+    }
+    
+    /* CTA Button Enhancement */
+    .cta-button {
+        font-weight: 600 !important;
+        text-transform: none !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 8px rgba(33, 128, 141, 0.15) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .cta-button:hover {
+        box-shadow: 0 4px 12px rgba(33, 128, 141, 0.25) !important;
+        transform: translateY(-2px);
+    }
+    
+    /* Mobile Menu Button */
+    .mobile-menu-button {
+        color: var(--mud-palette-text-primary) !important;
+    }
+    
+    /* ============================================ */
+    /* Mobile Drawer Styling */
+    /* ============================================ */
+    
+    .mobile-drawer {
+        width: 280px;
+    }
+    
+    .mobile-nav-menu {
+        padding: 1rem 0;
+    }
+    
+    /* Mobile nav link styling */
+    ::deep .mobile-nav-menu .mud-nav-link {
+        margin: 0.25rem 1rem;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+    
+    ::deep .mobile-nav-menu .mud-nav-link:hover {
+        background-color: rgba(33, 128, 141, 0.08);
+    }
+    
+    ::deep .mobile-nav-menu .mud-nav-link-text {
+        font-size: 1rem;
+    }
+    
+    /* ============================================ */
+    /* Responsive Adjustments */
+    /* ============================================ */
+    
+    @@media (max-width: 960px) {
+        .logo-text {
+            font-size: 1.25rem !important;
+        }
+    }
+    
+    @@media (max-width: 600px) {
+        .logo-text {
+            font-size: 1.125rem !important;
+        }
+    }
+</style>
+
+@code {
+    private bool _drawerOpen = false;
+    
+    private void ToggleDrawer()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+    
+    private void CloseDrawer()
+    {
+        _drawerOpen = false;
+    }
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Initialize scroll effect
+            await JSRuntime.InvokeVoidAsync("initializeHeaderScroll");
+        }
+    }
+    
+    private readonly Dictionary<string, object> _buttonAttributes = new()
+    {
+        { "data-token", "7e9db90da7914f2eb050897850a0d1db" },
+        { "data-orgname", "Fathers-Comfort-Handy-Man--HVAC" }
+    };
+    
+    private async Task ScheduleService()
+    {
+        if (_drawerOpen)
+        {
+            CloseDrawer();
+        }
+
+        await SchedulingService.OpenModalAsync();
+    }
+}

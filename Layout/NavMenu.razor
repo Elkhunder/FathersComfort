@@ -1,0 +1,69 @@
+@inject IJSRuntime JSRuntime;
+
+<MudAppBar >
+    <MudLink href="/">
+        <MudImage Src="./images/FC_Icon_Transparent.svg" ObjectFit="ObjectFit.Contain" Height="64"></MudImage>
+    </MudLink>
+    <MudText Class="pl-3" Typo="Typo.h5" Color="Color.Primary">Fathers Comfort</MudText>
+    <MudSpacer/>
+    <MudStack Row>
+        <MudLink Class="mud-button-root mud-button mud-button-text mud-button-text-inherit mud-button-text-size-medium mud-ripple mx-1 px-3" 
+                 Href="/home" 
+                 Color="Color.Primary"
+                 Underline="Underline.None">
+            Home
+        </MudLink>
+        <MudLink Class="mud-button-root mud-button mud-button-text mud-button-text-inherit mud-button-text-size-medium mud-ripple mx-1 px-3" 
+                 Href="/home" 
+                 Color="Color.Primary"
+                 Underline="Underline.None">
+            Services
+        </MudLink>
+        <MudLink Class="mud-button-root mud-button mud-button-text mud-button-text-inherit mud-button-text-size-medium mud-ripple mx-1 px-3" 
+                 Href="/home" 
+                 Color="Color.Primary"
+                 Underline="Underline.None">
+            About Us
+        </MudLink>
+        <MudLink Class="mud-button-root mud-button mud-button-text mud-button-text-inherit mud-button-text-size-medium mud-ripple mx-1 px-3" 
+                 Href="/home" 
+                 Color="Color.Primary"
+                 Underline="Underline.None">
+            Contact
+        </MudLink>
+    </MudStack>
+    <MudSpacer/>
+    <!--Start of Housecallpro Online booking button-->
+    <MudButton Class="rounded-pill"
+               Color="Color.Primary"
+               Variant="Variant.Filled"
+               Size="Size.Medium"
+               UserAttributes="@_buttonAttributes"
+               OnClick="@OpenModal">
+        Book online
+    </MudButton>
+    <!--End of Housecallpro Online booking button-->
+</MudAppBar>
+@code {
+    private readonly Dictionary<string, object> _buttonAttributes = new()
+    {
+        { "data-token", "7e9db90da7914f2eb050897850a0d1db" },
+        { "data-orgname", "Fathers-Comfort-Handy-Man--HVAC" }
+    };
+    
+    private async Task OpenModal()
+    {
+        // Check if the widget is available before calling
+        var widgetExists = await JSRuntime.InvokeAsync<bool>("eval", "typeof HCPWidget !== 'undefined' && typeof HCPWidget.openModal === 'function'");
+    
+        if (widgetExists)
+        {
+            await JSRuntime.InvokeVoidAsync("HCPWidget.openModal");
+        }
+        else
+        {
+            // Handle case where script hasn't loaded yet
+            Console.WriteLine("HCPWidget not yet available");
+        }
+    }
+}

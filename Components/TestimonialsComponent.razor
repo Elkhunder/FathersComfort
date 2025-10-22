@@ -1,0 +1,92 @@
+<section id="testimonials" class="section testimonials">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudText Typo="Typo.h2" Class="section-title fade-in" Align="Align.Center">What Our Customers Say</MudText>
+        <MudGrid Class="section-content">
+            <MudItem xs="12" md="4">
+                <MudCard Class="testimonial-card fade-in" Elevation="2">
+                    <MudCardContent>
+                        <div class="stars">
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Star" Color="Color.Primary" />
+                            }
+                        </div>
+                        <MudText Typo="Typo.body1" Class="testimonial-quote">
+                            "The team was professional, punctual, and did an amazing job installing our new AC unit. Our home has never been more comfortable!"
+                        </MudText>
+                        <MudText Typo="Typo.subtitle1" Class="testimonial-author">Sarah M., Springfield</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudCard Class="testimonial-card fade-in" Elevation="2">
+                    <MudCardContent>
+                        <div class="stars">
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Star" Color="Color.Primary" />
+                            }
+                        </div>
+                        <MudText Typo="Typo.body1" Class="testimonial-quote">
+                            "I've used them for both HVAC service and handyman work. Always reliable, fair pricing, and quality workmanship. Highly recommend!"
+                        </MudText>
+                        <MudText Typo="Typo.subtitle1" Class="testimonial-author">John D., Riverside</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudCard Class="testimonial-card fade-in" Elevation="2">
+                    <MudCardContent>
+                        <div class="stars">
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Star" Color="Color.Primary" />
+                            }
+                        </div>
+                        <MudText Typo="Typo.body1" Class="testimonial-quote">
+                            "When our heater broke in the middle of winter, they came out the same day. Fast, friendly, and got us warm again quickly. True lifesavers!"
+                        </MudText>
+                        <MudText Typo="Typo.subtitle1" Class="testimonial-author">Maria L., Oakdale</MudText>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</section>
+
+<style>
+    .testimonial-card {
+        background-color: var(--mud-palette-surface);
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 12px;
+        border: 2px solid var(--mud-palette-tertiary-lighten);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46, 48, 62, 0.1);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(46, 48, 62, 0.1);
+    }
+    
+    .stars{
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    .testimonial-quote {
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        line-height: 1.7;
+    }
+
+    .testimonial-author {
+        font-weight: 600;
+    }
+</style>
+
+@code {
+
+}

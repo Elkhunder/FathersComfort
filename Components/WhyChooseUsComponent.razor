@@ -1,0 +1,76 @@
+<section id="about" class="section section-background">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudText Class="fade-in" Typo="Typo.h3" Style="font-weight: bold" Align="Align.Center">Why Homeowners Trust Us</MudText>
+        <MudGrid Class="section-content">
+            <MudItem xs="12" md="4">
+                <div class="trust-item fade-in">
+                    <div class="trust-icon-container">
+                        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Verified" IconSize="Size.Large" Class="trust-icon" />
+                    </div>
+                    <MudText Typo="Typo.h5" Class="trust-title">Licensed & Insured</MudText>
+                    <MudText Typo="Typo.body1" Class="trust-description">
+                        Fully licensed, bonded, and insured for your peace of mind and protection.
+                    </MudText>
+                </div>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <div class="trust-item fade-in">
+                    <div class="trust-icon-container">
+                        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Outlined.Star" IconSize="Size.Large" Class="trust-icon" />
+                    </div>
+                    <MudText Typo="Typo.h5" Class="trust-title">Veteran Owned & Operated</MudText>
+                    <MudText Typo="Typo.body1" Class="trust-description">
+                        Proudly veteran-owned and operated, bringing military discipline and dedication to every project we undertake.
+                    </MudText>
+                </div>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <div class="trust-item fade-in">
+                    <div class="trust-icon-container">
+                        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Outlined.VerifiedUser" IconSize="Size.Large" Class="trust-icon" />
+                    </div>
+                    <MudText Typo="Typo.h5" Class="trust-title">100% Satisfaction Guaranteed</MudText>
+                    <MudText Typo="Typo.body1" Class="trust-description">
+                        We stand behind our work with a complete satisfaction guarantee on every job.
+                    </MudText>
+                </div>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</section>
+
+<style>
+    
+    .trust-item {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .trust-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 24px;
+        pointer-events: none;
+        cursor: default;
+        color: white;
+    }
+
+    .trust-item h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .trust-item p {
+        opacity: 0.8;
+        font-size: 1.1rem;
+    }
+</style>
+
+@code {
+
+}

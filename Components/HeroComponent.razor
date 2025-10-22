@@ -1,0 +1,211 @@
+@using FathersComfort_MudBlazor.Services
+@inject IJSRuntime JSRuntime
+@inject ISchedulingService SchedulingService
+
+<section id="home" class="section hero-section">
+    <MudContainer MaxWidth="MaxWidth.Large" Class="hero-container fade-in">
+        <MudStack Spacing="6" AlignItems="AlignItems.Center" Class="hero-content">
+            
+            @* Hero Title *@
+            <MudText Typo="Typo.h1" 
+                     Align="Align.Center"
+                     Class="hero-title">
+                Your Comfort is Our Priority
+            </MudText>
+            
+            @* Hero Subtitle *@
+            <MudText Typo="Typo.h5" 
+                     Align="Align.Center"
+                     Class="hero-subtitle">
+                Professional HVAC & Handyman Services You Can Trust
+            </MudText>
+            
+            @* Hero Action Buttons *@
+            <MudStack Row="true" 
+                      Spacing="4" 
+                      AlignItems="AlignItems.Center"
+                      Justify="Justify.Center"
+                      Class="hero-buttons">
+                
+                <MudButton Variant="Variant.Filled" 
+                           Color="Color.Primary" 
+                           Size="Size.Large"
+                           StartIcon="@Icons.Material.Filled.CalendarMonth"
+                           Class="hero-cta-button"
+                           OnClick="@(() => SchedulingService.OpenModalAsync())"
+                           UserAttributes="_buttonAttributes">
+                    Schedule Service
+                </MudButton>
+                
+                <MudButton Variant="Variant.Outlined" 
+                           Color="Color.Primary" 
+                           Size="Size.Large"
+                           Href="tel:3134120407"
+                           StartIcon="@Icons.Material.Filled.Phone"
+                           Class="hero-phone-button">
+                    Call Now: (313) 412-0407
+                </MudButton>
+                
+            </MudStack>
+            
+        </MudStack>
+    </MudContainer>
+</section>
+
+<style>
+    /* Hero Section with Background Image */
+    .hero-section {
+        min-height: 70vh;
+        background-image: linear-gradient(rgba(236, 232, 211, 0.85), rgba(236, 232, 211, 0.85)), 
+                          url('https://pplx-res.cloudinary.com/image/upload/v1757419125/pplx_project_search_images/4098cb8ec3e30d22dfc15b8ea3145be45c81bbb4.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    /* Container positioning */
+    .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh;
+        padding: 3rem 1rem;
+    }
+
+    /* Hero content wrapper */
+    .hero-content {
+        max-width: 900px;
+        width: 100%;
+    }
+
+    /* Hero title styling */
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem) !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    /* Hero subtitle styling */
+    .hero-subtitle {
+        font-size: clamp(1.125rem, 2.5vw, 1.5rem) !important;
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Button container */
+    .hero-buttons {
+        margin-top: 1rem;
+    }
+
+    /* Enhanced CTA button */
+    .hero-cta-button {
+        padding: 14px 32px !important;
+        font-size: 1.125rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 12px rgba(33, 128, 141, 0.2) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .hero-cta-button:hover {
+        box-shadow: 0 6px 20px rgba(33, 128, 141, 0.3) !important;
+        transform: translateY(-2px);
+    }
+
+    /* Phone button styling */
+    .hero-phone-button {
+        padding: 14px 32px !important;
+        font-size: 1.125rem !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        border-radius: 8px !important;
+        border-width: 2px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .hero-phone-button:hover {
+        background-color: rgba(33, 128, 141, 0.08) !important;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive adjustments */
+    @@media (max-width: 960px) {
+        .hero-section {
+            min-height: 60vh;
+            background-attachment: scroll;
+        }
+
+        .hero-container {
+            min-height: 60vh;
+            padding: 2rem 1rem;
+        }
+
+        .hero-buttons {
+            flex-direction: column !important;
+            width: 100%;
+        }
+
+        .hero-cta-button,
+        .hero-phone-button {
+            width: 100%;
+            max-width: 320px;
+        }
+    }
+
+    @@media (max-width: 600px) {
+        .hero-section {
+            min-height: 50vh;   
+        }
+
+        .hero-container {
+            min-height: 50vh;
+            padding: 1.5rem 0.75rem;
+        }
+
+        .hero-cta-button,
+        .hero-phone-button {
+            padding: 12px 24px !important;
+            font-size: 1rem !important;
+        }
+    }
+</style>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Trigger fade-in animation after component renders
+            await Task.Delay(100);
+            StateHasChanged();
+        }
+    }
+    
+    private readonly Dictionary<string, object> _buttonAttributes = new()
+    {
+        { "data-token", "7e9db90da7914f2eb050897850a0d1db" },
+        { "data-orgname", "Fathers-Comfort-Handy-Man--HVAC" }
+    };
+    
+    private async Task OpenHouseCallProModal()
+    {
+        // Check if the widget is available before calling
+        var widgetExists = await JSRuntime.InvokeAsync<bool>("eval", "typeof HCPWidget !== 'undefined' && typeof HCPWidget.openModal === 'function'");
+    
+        if (widgetExists)
+        {
+            await JSRuntime.InvokeVoidAsync("HCPWidget.openModal");
+        }
+        else
+        {
+            // Handle case where script hasn't loaded yet
+            Console.WriteLine("HCPWidget not yet available");
+        }
+    }
+}

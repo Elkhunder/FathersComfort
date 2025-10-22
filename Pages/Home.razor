@@ -1,0 +1,73 @@
+﻿@page "/"
+@using System.ComponentModel.DataAnnotations
+@using FathersComfort_MudBlazor.Components
+@inject IJSRuntime JSRuntime
+@inject ISnackbar Snackbar
+
+<PageTitle>Father's Comfort - Your Comfort is Our Priority</PageTitle>
+
+<HeadContent>
+    <meta name="description" content="Professional HVAC & handyman services focused on comfort and trust. Licensed, insured, and serving homeowners for 20+ years.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</HeadContent>
+
+<HeroComponent/>
+<ServicesComponent/>
+<WhyChooseUsComponent/>
+<TestimonialsComponent/>
+<CtaComponent/>
+
+@code {
+    private ContactFormModel _contactForm = new();
+    private bool _isSubmitting;
+
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToElement", sectionId);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        _isSubmitting = true;
+        
+        // Simulate form submission
+        await Task.Delay(2000);
+        
+        Snackbar.Add("Thank you! Your message has been sent. We'll contact you soon.", Severity.Success);
+        
+        // Reset form
+        _contactForm = new ContactFormModel();
+        _isSubmitting = false;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(200);
+            await JSRuntime.InvokeVoidAsync("initializeFadeIn");
+        }
+    }
+
+    public class ContactFormModel
+    {
+        [Required(ErrorMessage = "Name is required")]
+        [MinLength(2, ErrorMessage = "Name must be at least 2 characters")]
+        public string Name { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Please enter a valid email address")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Phone number is required")]
+        [Phone(ErrorMessage = "Please enter a valid phone number")]
+        public string Phone { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Please select a service type")]
+        public string ServiceType { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Message is required")]
+        [MinLength(10, ErrorMessage = "Message must be at least 10 characters")]
+        public string Message { get; set; } = string.Empty;
+    }
+}

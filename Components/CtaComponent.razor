@@ -1,0 +1,62 @@
+@using FathersComfort_MudBlazor.Services
+
+@inject ISchedulingService SchedulingService
+
+<section class="section cta-section">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <div class="cta-content fade-in">
+            <MudText Typo="Typo.h2" Align="Align.Center">Ready to Experience True Comfort?</MudText>
+            <MudText Typo="Typo.body1" Class="cta-subtitle" Align="Align.Center">Contact us today for a free consultation</MudText>
+            <div class="cta-button-container">
+                <MudButton Variant="Variant.Filled" 
+                           Size="Size.Large"
+                           Class="btn-white"
+                           OnClick="@(() => SchedulingService.OpenModalAsync())">
+                    Get Your Free Quote
+                </MudButton>
+            </div>
+        </div>
+    </MudContainer>
+</section>
+
+<style>
+    .cta-section {
+        background-color: var(--mud-palette-primary);
+        color: white;
+        text-align: center;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .cta-section p {
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    .btn-white {
+        background-color: white;
+        padding: 18px 36px;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-white:hover {
+        background-color: var(--mud-palette-surface);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+</style>
+
+@code {
+
+}
