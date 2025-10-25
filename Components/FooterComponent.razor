@@ -3,52 +3,22 @@
 <footer id="contact" class="footer">
     <MudContainer MaxWidth="MaxWidth.Large">
         <MudGrid Spacing="10" Class="footer-content">
-            <MudItem xs="12" md="4">
+            <MudItem xs="12" md="6">
                 <div class="footer-section">
-                    <MudText Typo="Typo.h6" Class="footer-section-title">Comfort HVAC & Handyman</MudText>
+                    <MudText Typo="Typo.h6" Class="footer-section-title">Fathers Comfort HVAC & Handyman</MudText>
                     <MudText Typo="Typo.body2" Class="footer-description">
-                        a veteran-owned and operated company specializing in handyman services as well as heating and cooling solutions focusing on providing reliable and quality service to meet your home maintenance and comfort needs.
-                        I 
+                        Your trusted partner for home comfort and repairs. We're committed to providing exceptional service with a focus on quality, reliability, and customer satisfaction.
                     </MudText>
-                    <div class="social-links">
-                        <MudIconButton Icon="@Icons.Custom.Brands.Facebook" 
-                                       Class="social-link"
-                                       Href="#" />
-                        <MudIconButton Icon="@Icons.Custom.Brands.Instagram" 
-                                       Class="social-link"
-                                       Href="#" />
-                        <MudIconButton Icon="@Icons.Custom.Brands.Twitter" 
-                                       Class="social-link"
-                                       Href="#" />
-                    </div>
+                    
                 </div>
             </MudItem>
-            <MudItem xs="12" md="4">
-                <div class="footer-section">
-                    <MudText Typo="Typo.h6" Class="footer-section-title">Quick Links</MudText>
-                    <MudStack Spacing="2"  Class="footer-links">
-                        <MudLink Href="#services" Underline="Underline.None">Services</MudLink>
-                        <MudLink Href="#about" Underline="Underline.None">About Us</MudLink>
-                        <MudLink Href="#testimonials" Underline="Underline.None">Testimonials</MudLink>
-                        <MudLink Href="#blog" Underline="Underline.None">Blog</MudLink>
-                    </MudStack>
-                </div>
-            </MudItem>
-            <MudItem xs="12" md="4">
+            <MudItem xs="12" md="6">
                 <div class="footer-section">
                     <MudText Typo="Typo.h6" Class="footer-section-title">Contact Information</MudText>
                     <div class="contact-info">
                         <MudText Typo="Typo.body2"><strong>Phone:</strong> <MudLink Class="nav-link" Href="tel:3134120407">(313) 412 - 0407</MudLink></MudText>
                         <MudText Typo="Typo.body2"><strong>Email:</strong><MudLink Class="nav-link" Href="mailto:fatherscomforthvac@gmail.com"> fatherscomforthvac@gmail.com</MudLink></MudText>
-                        <MudText Typo="Typo.body2"><strong>Address:</strong> 
-                            <MudLink Href="@GetMapsLink()"  
-                                     Underline="Underline.None"
-                                     Target="_blank"
-                                     Class="nav-link">
-                                15894 Flanagan St.
-                                Roseville, MI
-                            </MudLink>
-                        </MudText>
+                        <MudText Typo="Typo.body2"><strong style="margin-right: 12px">Address:</strong>Roseville, MI</MudText>
                         <MudText Class="pt-3" Typo="Typo.body2">
                             <strong>Hours:</strong><br />
                             Mon-Fri: 8am-5pm
@@ -56,11 +26,24 @@
                     </div>
                 </div>
             </MudItem>
+            <MudItem xs="12">
+                <div class="footer-section social-links">
+                    <MudIconButton Icon="@Icons.Custom.Brands.Facebook" 
+                                   Class="social-link"
+                                   Href="https://www.facebook.com/profile.php?id=61565866948949" />
+                    @* <MudIconButton Icon="@Icons.Custom.Brands.Instagram"  *@
+                    @*                Class="social-link" *@
+                    @*                Href="#" /> *@
+                    @* <MudIconButton Icon="@Icons.Custom.Brands.Twitter"  *@
+                    @*                Class="social-link" *@
+                    @*                Href="#" /> *@
+                </div>
+            </MudItem>
         </MudGrid>
         <MudDivider Class="footer-divider" />
         <div class="footer-bottom">
             <MudText Typo="Typo.caption" Align="Align.Center">
-                © 2025 Comfort HVAC & Handyman. All rights reserved. | Licensed & Insured
+                © 2025 Fathers Comfort HVAC & Handyman. All rights reserved. | Licensed & Insured
             </MudText>
         </div>
     </MudContainer>
@@ -72,6 +55,10 @@
         background-color: var(--mud-palette-dark);
         color: white;
         padding: 60px 0 20px;
+    }
+    
+    .footer-section {
+        margin: 0 20px;
     }
 
     .footer-content {
@@ -99,6 +86,7 @@
         line-height: 1.8;
         opacity: 0.9;
         font-size: 0.95rem;
+        max-width: 75%;
     }
 
     .social-links {
