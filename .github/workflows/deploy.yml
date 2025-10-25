@@ -36,11 +36,19 @@ jobs:
       - name: Publish app
         run: dotnet publish -c Release
 
-      - name: Rewrite base href
-        uses: SteveSandersonMS/ghaction-rewrite-base-href@v1.1.0
-        with:
-          html_path: ${{ env.PUBLISH_DIR }}/index.html
-          base_href: /FathersComfort/  # Replace with your repository name
+#      - name: Rewrite base href
+#        uses: SteveSandersonMS/ghaction-rewrite-base-href@v1.1.0
+#        with:
+#          html_path: ${{ env.PUBLISH_DIR }}/index.html
+#          base_href: /FathersComfort/  # Replace with your repository name
+      - name: Add .nojekyll file
+        run: touch ${{ env.PUBLISH_DIR }}/.nojekyll
+
+      - name: Add CNAME file
+        run: echo 'fatherscomfort.com' > ${{ env.PUBLISH_DIR }}/CNAME
+
+      - name: Copy index.html to 404.html
+        run: cp ${{ env.PUBLISH_DIR }}/index.html ${{ env.PUBLISH_DIR }}/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
