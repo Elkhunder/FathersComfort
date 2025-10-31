@@ -18,43 +18,19 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="fathers-comfort-2\favicon.ico">
+      <Content Update="images\favicon.ico">
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
-      <Content Remove="fathers-comfort\**" />
-      <Content Remove="fathers-comfort-2\**" />
-      <Content Remove="fathers-comfort-3\**" />
-      <Content Remove="Fathers_Comfort_4\**" />
-      <Content Include=".github\workflows\deploy.yml" />
     </ItemGroup>
 
     <ItemGroup>
       <None Include="wwwroot\css\site.css" />
       <None Include="wwwroot\js\site.js" />
-      <None Remove="fathers-comfort\**" />
-      <None Remove="fathers-comfort-2\**" />
-      <None Remove="fathers-comfort-3\**" />
-      <None Remove="Fathers_Comfort_4\**" />
     </ItemGroup>
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff" />
       <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff2" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="fathers-comfort\**" />
-      <Compile Remove="fathers-comfort-2\**" />
-      <Compile Remove="fathers-comfort-3\**" />
-      <Compile Remove="Fathers_Comfort_4\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="fathers-comfort\**" />
-      <EmbeddedResource Remove="fathers-comfort-2\**" />
-      <EmbeddedResource Remove="fathers-comfort-3\**" />
-      <EmbeddedResource Remove="Fathers_Comfort_4\**" />
-    </ItemGroup>
-
 </Project>
