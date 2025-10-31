@@ -1,4 +1,4 @@
-namespace FathersComfort_MudBlazor.Services;
+namespace FathersComfort.Services;
 
 public interface ISchedulingService
 {

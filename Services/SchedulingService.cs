@@ -1,6 +1,6 @@
 using Microsoft.JSInterop;
 
-namespace FathersComfort_MudBlazor.Services;
+namespace FathersComfort.Services;
 
 public class SchedulingService(IJSRuntime jsRuntime) : ISchedulingService
 {
