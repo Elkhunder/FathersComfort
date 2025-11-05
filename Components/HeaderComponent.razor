@@ -34,11 +34,11 @@
                      Class="nav-link">
                 About Us
             </MudLink>
-            <MudLink Href="#testimonials" 
+            <MudNavLink Href="/testimonials" 
                      Underline="Underline.None"
                      Class="nav-link">
                 Testimonials
-            </MudLink>
+            </MudNavLink>
             <MudLink Href="#contact" 
                      Underline="Underline.None"
                      Class="nav-link">
@@ -51,7 +51,10 @@
     
     @* CTA Button - Hidden on mobile *@
     <MudHidden Breakpoint="Breakpoint.MdAndDown" Invert="false">
-        <MudButton Variant="Variant.Filled"
+        <MudButton id="cta-header" 
+                   data-token="7e9db90da7914f2eb050897850a0d1db"
+                   data-orgname="Fathers-Comfort-Handy-Man--HVAC"
+                   Variant="Variant.Filled"
                    Color="Color.Primary"
                    Size="Size.Medium"
                    StartIcon="@Icons.Material.Filled.CalendarMonth"
@@ -104,7 +107,7 @@
                     OnClick="@CloseDrawer">
             About Us
         </MudNavLink>
-        <MudNavLink Href="#testimonials" 
+        <MudNavLink Href="/testimonials" 
                     Icon="@Icons.Material.Filled.Reviews"
                     OnClick="@CloseDrawer">
             Testimonials
@@ -114,23 +117,20 @@
                     OnClick="@CloseDrawer">
             Contact
         </MudNavLink>
-        <MudNavLink Href="#blog" 
-                    Icon="@Icons.Material.Filled.Article"
-                    OnClick="@CloseDrawer">
-            Blog
-        </MudNavLink>
         
         <MudDivider Class="my-4" />
         
         @* Mobile CTA Button *@
         <div class="pa-4">
-            <MudButton Variant="Variant.Filled"
+            <MudButton id="cta-header-mobile" 
+                       data-token="7e9db90da7914f2eb050897850a0d1db"
+                       data-orgname="Fathers-Comfort-Handy-Man--HVAC"
+                       Variant="Variant.Filled"
                        Color="Color.Primary"
                        FullWidth="true"
                        Size="Size.Large"
                        StartIcon="@Icons.Material.Filled.CalendarMonth"
                        OnClick="@ScheduleService"
-                       UserAttributes="_buttonAttributes"
                        Class="cta-button">
                 Schedule Service
             </MudButton>

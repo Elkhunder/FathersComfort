@@ -1,8 +1,10 @@
 ﻿@page "/"
+@page "/testimonials"
 @using System.ComponentModel.DataAnnotations
 @using FathersComfort.Components
 @inject IJSRuntime JSRuntime
 @inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 
 <PageTitle>Father's Comfort - Your Comfort is Our Priority</PageTitle>
 
@@ -38,6 +40,22 @@
         // Reset form
         _contactForm = new ContactFormModel();
         _isSubmitting = false;
+    }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += LocationChanged;
+    }
+
+    private void LocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        var path = e.Location.Split('/')[3];
+        
+        switch (path)
+        {
+            case "testimonials": NavigationManager.NavigateTo($"/{path}#testimonials");
+                break;
+        }
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

@@ -22,15 +22,38 @@
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
+      <Content Remove="WebApp\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Include="wwwroot\css\site.css" />
       <None Include="wwwroot\js\site.js" />
+      <None Remove="WebApp\**" />
     </ItemGroup>
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff" />
       <_ContentIncludedByDefault Remove="wwwroot\fonts\bootstrap-icons.woff2" />
+      <_ContentIncludedByDefault Remove="WebApp\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="WebApp\appsettings.json" />
+      <_ContentIncludedByDefault Remove="WebApp\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="WebApp\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="WebApp\obj\WebApp.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="WebApp\Properties\launchSettings.json" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApp\Pages\_ViewStart.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="WebApp\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="WebApp\**" />
     </ItemGroup>
 </Project>

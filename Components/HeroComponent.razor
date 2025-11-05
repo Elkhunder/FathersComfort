@@ -27,13 +27,15 @@
                       Justify="Justify.Center"
                       Class="hero-buttons">
                 
-                <MudButton Variant="Variant.Filled" 
+                <MudButton id="cta-hero" 
+                           data-token="7e9db90da7914f2eb050897850a0d1db"
+                           data-orgname="Fathers-Comfort-Handy-Man--HVAC"
+                           Variant="Variant.Filled" 
                            Color="Color.Primary" 
                            Size="Size.Large"
                            StartIcon="@Icons.Material.Filled.CalendarMonth"
                            Class="hero-cta-button"
-                           OnClick="@(() => SchedulingService.OpenModalAsync())"
-                           UserAttributes="_buttonAttributes">
+                           OnClick="@(() => SchedulingService.OpenModalAsync())">
                     Schedule Service
                 </MudButton>
                 
